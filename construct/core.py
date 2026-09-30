@@ -2835,7 +2835,7 @@ class Const(Subconstruct):
 
     def __init__(self, value, subcon=None):
         if subcon is None:
-            if not isinstance(value, bytes):
+            if not isinstance(value, bytes) and not isinstance(value, bytearray):
                 raise StringError(f"given non-bytes value {repr(value)}, perhaps unicode?")
             subcon = Bytes(len(value))
         super().__init__(subcon)
